@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>INST377 - Lab 4</title>
+
+    <style>
+      body {
+        background-color: seagreen;
+      }
+
+      .content-area {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        grid-gap: 10px;
+        text-align: center;
+      }
+
+      .alert-me,
+      .change-color,
+      .text-tester,
+      .add-text {
+        background-color: aliceblue;
+        border: 2px solid black;
+        padding: 10px;
+        border-radius: 10px;
+        align-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="heading">INST377 - Lab 4</h1>
+
+    <div class="main-container">
+      <div class="content-area">
+        <!-- Alert Me Section -->
+        <div class="alert-me">
+          <form name="userName">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required />
+            <button onclick="alertMe()">Alert Me!</button>
+          </form>
+
+          <script type="text/javascript">
+            function alertMe() {
+              document.getElementById("name").value;
+              alert("Hi " + document.getElementById("name").value + "!");
+            }
+          </script>
+        </div>
+
+        <!-- Change Color Section -->
+        <div class="change-color">
+          <button onclick="changeColor()">Change Color!</button>
+
+          <script type="text/javascript">
+            function changeColor() {
+              if (document.body.style.backgroundColor == "lightblue") {
+                document.body.style.backgroundColor = "seagreen";
+              } else {
+                document.body.style.backgroundColor = "lightblue";
+              }
+            }
+          </script>
+        </div>
+
+        <!-- Text Tester Section -->
+        <div class="text-tester">
+          <form name="inputTester">
+            <label for="textTester">Text Tester:</label>
+            <input type="text" id="textTester" />
+            <button onclick="validateText()">Validate Text</button>
+          </form>
+
+          <script type="text/javascript">
+            function validateText() {
+              var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+              if (validation.test(document.inputTester.textTester.value)) {
+                alert("Input Valid Text!");
+
+                return false;
+              }
+            }
+          </script>
+        </div>
+
+        <!-- Add Text Section -->
+        <div class="add-text">
+          <button onclick="addText()" id="addTextButton">Add Text</button>
+
+          <script type="text/javascript">
+            function addText() {
+              document.getElementById("heading").textContent +=
+                " - New Text Added!";
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
